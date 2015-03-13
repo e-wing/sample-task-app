@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<h1><%= @project.name %></h1>
+  <% @milestones.each do |milestone, index| %>
+
+<h2><%= milestone.name %><h2>
+    <% milestone.tasks.each do |task, index| %>
+<h4><%= task.name %><h4>
+
+    <% end %>
+<% end %>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %><br><br>
+<%= link_to 'New Milestones and Tasks', new_milestones_path %>

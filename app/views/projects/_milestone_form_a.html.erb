@@ -1,0 +1,20 @@
+<%= form_for @project do |f| %>
+  <% @milestones_templates.each_with_index do |milestone_template, index| %>
+    <%= f.fields_for :milestones, index: index do |fm| %>
+      <!-- Create a checkbox to add the milestone_id to the project -->
+      <%= fm.label :name, milestone_template.name %>
+      <%= check_box_tag  "project[milestone_ids][]"%><br>
+
+     
+      <% milestone_template.task_templates.each_with_index do |task_template, another_index| %>
+        <%= fm.fields_for :tasks, index: another_index do |ft| %>
+          <!-- Create a checkbox for each task in the milestone -->
+          <%= ft.label :name, task_template.name %>
+      <%= check_box_tag  "project[milestone][task_ids][]" %>
+        <% end %><br>
+      <% end %>
+    <% end %>
+  <% end %>
+      <%= f.submit %>
+
+<% end %>
