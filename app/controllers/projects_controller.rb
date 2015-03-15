@@ -25,24 +25,24 @@ class ProjectsController < ApplicationController
 
   def new_milestones
     @project.milestones.build
-    @project.tasks.build
-    @milestones_templates = MilestoneTemplate.where(template_id: @project.template_id)
-  end
+   @project.tasks.build
+   @milestones_templates = MilestoneTemplate.where(template_id: @project.template_id)
+ end
 
-  def create_milestones
-    @project.milestone_ids = params[:project][:milestones]
-    @project.task_ids = params[:project][:tasks]
-    @milestone = Milestone.new
-    @task = Task.new
-    @template = Template.find( @project.template_id)
-    if @project.update_attributes(project_params)
-      redirect_to  view_milestones_path(p: @project.id)
-      flash[:notice] = "Successfully Added Tasks & Milestones"
-    else
-      redirect_to  new_milestones_path(p:  @project.id )
-      format.json { render json: @project.errors, status: :unprocessable_entity }
-    end
+ def create_milestones
+   @project.milestone_ids = params[:project][:milestones]
+   @project.task_ids = params[:project][:tasks]
+   @milestone = Milestone.new
+   @task = Task.new
+   @template = Template.find( @project.template_id)
+   if @project.update_attributes(project_params)
+    redirect_to  view_milestones_path(p: @project.id)
+    flash[:notice] = "Successfully Added Tasks & Milestones"
+  else
+    redirect_to  new_milestones_path(p:  @project.id )
+    format.json { render json: @project.errors, status: :unprocessable_entity }
   end
+end
 
   # POST /projects
   # POST /projects.json

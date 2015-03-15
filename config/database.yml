@@ -18,6 +18,7 @@ development:
   adapter: postgresql
   database: taskit_development
   username: dougdebold
+  username: task
   password: password
 
 # Warning: The database defined as "test" will be erased and
