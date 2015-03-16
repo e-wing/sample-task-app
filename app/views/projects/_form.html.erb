@@ -10,7 +10,8 @@
       </ul>
     </div>
   <% end %>
-<%= f.text_field :name, placholder: 'project name' %>
+  <%= f.text_field :name, placholder: 'project name' %>
+  <%= f.select :template_id, options_from_collection_for_select( @templates, 'id', 'name' ), {include_blank: true} %>
 
   <div class="actions">
     <%= f.submit %>

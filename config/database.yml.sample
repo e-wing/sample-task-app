@@ -17,7 +17,6 @@ development:
   <<: *default
   adapter: postgresql
   database: taskit_development
-  username: dougdebold
   username: task
   password: password
 
@@ -26,8 +25,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: taskit_test
+  database: db/test.sqlite3
 
 production:
   <<: *default
-  database: taskit_production
+  database: db/production.sqlite3

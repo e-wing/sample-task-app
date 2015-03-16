@@ -33,6 +33,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Better Errors and binding of caller give you a repl in your browser where the
+  # error occured so that you can figure it out.
+  gem 'better_errors', '~> 2.1.1'
+  gem 'binding_of_caller', '~> 0.7.2'
+
+  # Annotate gives you nice model annotations so that you can see exactly the db columns that
+  # You model has.
+  gem 'annotate', '~> 2.6.6'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
