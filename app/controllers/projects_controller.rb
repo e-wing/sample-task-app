@@ -16,7 +16,6 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-    @templates = Template.all
   end
 
   # GET /projects/1/edit
@@ -64,12 +63,10 @@ end
   # PATCH/PUT /projects/1.json
   def update
     respond_to do |format|
-      result = ProjectUpdater.perform(@project, update_params) == true
-      if result == true
+      if @project.update(project_params)
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }
         format.json { render :show, status: :ok, location: @project }
       else
-        @project = result
         format.html { render :edit }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
@@ -90,10 +87,6 @@ end
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       @project = Project.find(params[:id])
-    end
-
-    def update_params
-      params.require(:project).permit(:name, :milestones => [:name, :milestone_ids, :tasks => [:task_ids] ] )
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

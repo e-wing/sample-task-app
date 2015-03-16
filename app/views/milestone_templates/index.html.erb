@@ -12,8 +12,6 @@
   <tbody>
     <% @milestone_templates.each do |milestone_template| %>
       <tr>
-        <td><%= milestone_template.name %></td>
-        <td><%= link_to milestone_template.template.name, milestone_template.template%></td>
         <td><%= link_to 'Show', milestone_template %></td>
         <td><%= link_to 'Edit', edit_milestone_template_path(milestone_template) %></td>
         <td><%= link_to 'Destroy', milestone_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
